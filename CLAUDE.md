@@ -8,6 +8,7 @@ Frontend for Smarty Steps, a learning app for 5–8 year olds covering Math, Sci
 - Always invoke the `superpowers:using-superpowers` skill at the start of every new conversation.
 - Always invoke the `superpowers:test-driven-development` skill before writing any implementation code.
 - Always separate concerns into three layers: **Screens (UI only)** → **Hooks/API (data fetching)** → **Store (global state)**. No direct API calls in screens. No UI logic in the store.
+- Each task from an implementation plan gets its own branch (e.g. `feat/task-1-expo-init`). Never bundle multiple tasks onto one branch.
 
 ## Project Structure
 
@@ -56,4 +57,7 @@ Full spec: `docs/superpowers/specs/` (to be created)
 ## Implementation Plans
 
 - Plan 1 (Setup + Auth): `docs/superpowers/plans/2026-04-28-plan1-setup-auth.md`
-- Plan 2–5: Dashboard, Learn+Lesson, Ranks+Profile+Settings, Parent Dashboard (to be written)
+- Plan 2 (Dashboard): `docs/superpowers/plans/2026-04-28-plan2-dashboard.md`
+- Plan 3 (Learn + Lesson): `docs/superpowers/plans/2026-04-28-plan3-learn-lesson.md`
+- Plan 4 (Ranks + Profile + Settings): `docs/superpowers/plans/2026-04-28-plan4-ranks-profile-settings.md`
+- Plan 5 (Parent Dashboard): `docs/superpowers/plans/2026-04-28-plan5-parent-dashboard.md`
