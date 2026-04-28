@@ -1,0 +1,17 @@
+# Expo
+.expo/
+dist/
+web-build/
+node_modules/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+*.log
+
+# Worktrees
+.worktrees/
