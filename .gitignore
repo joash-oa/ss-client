@@ -16,6 +16,9 @@ node_modules/
 # Worktrees
 .worktrees/
 
+# IDE
+.idea/
+
 # Secrets / credentials
 google-play-service-account.json
 *.keystore
