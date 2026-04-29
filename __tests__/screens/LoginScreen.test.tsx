@@ -11,7 +11,7 @@ jest.mock('../../src/api/auth', () => ({
 }))
 
 jest.mock('../../src/store/useAuthStore', () => ({
-  useAuthStore: () => ({ setTokens: jest.fn() }),
+  useAuthStore: () => ({ setTokens: jest.fn().mockResolvedValue(undefined) }),
 }))
 
 import { authApi } from '../../src/api/auth'
@@ -37,7 +37,7 @@ test('shows error when fields are empty and Sign In pressed', async () => {
 test('calls authApi.login with trimmed email on submit', async () => {
   mockLogin.mockResolvedValue({ access_token: 'acc', refresh_token: 'ref' })
   const { getByPlaceholderText, getByText } = render(<LoginScreen />)
-  fireEvent.changeText(getByPlaceholderText(/email/i), 'a@b.com')
+  fireEvent.changeText(getByPlaceholderText(/email/i), '  a@b.com  ')
   fireEvent.changeText(getByPlaceholderText(/password/i), 'password123')
   fireEvent.press(getByText(/Sign In/i))
   await waitFor(() =>

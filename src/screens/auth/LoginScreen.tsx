@@ -79,9 +79,9 @@ export function LoginScreen() {
           keyboardShouldPersistTaps="handled"
         >
           <Animated.View style={[styles.header, slideUp(titleAnim)]}>
-            <Text style={styles.backLabel} onPress={() => navigate('Welcome')}>
-              ← Back
-            </Text>
+            <TouchableOpacity onPress={() => navigate('Welcome')} activeOpacity={0.7}>
+              <Text style={styles.backLabel}>← Back</Text>
+            </TouchableOpacity>
             <Text style={styles.title}>Welcome{'\n'}back</Text>
             <Text style={styles.subtitle}>Access your parent account</Text>
           </Animated.View>
