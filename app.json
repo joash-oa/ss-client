@@ -4,11 +4,19 @@
     "slug": "ss-client",
     "version": "1.0.0",
     "orientation": "portrait",
-    "platforms": ["android"],
+    "platforms": [
+      "android"
+    ],
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#0f0f1a"
       }
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2a4964ce-161e-4ceb-8d8f-8b91f38c265a"
+      }
+    },
+    "owner": "joash-oa"
   }
 }
