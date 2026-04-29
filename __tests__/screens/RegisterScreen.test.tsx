@@ -8,10 +8,13 @@ jest.mock('@react-navigation/native', () => ({
 
 jest.mock('../../src/api/auth', () => ({ authApi: { register: jest.fn() } }))
 jest.mock('../../src/api/learners', () => ({ learnersApi: { create: jest.fn() } }))
+
+const mockSetTokens = jest.fn().mockResolvedValue(undefined)
+const mockSetActiveLearner = jest.fn()
 jest.mock('../../src/store/useAuthStore', () => ({
   useAuthStore: () => ({
-    setTokens: jest.fn().mockResolvedValue(undefined),
-    setActiveLearner: jest.fn(),
+    setTokens: mockSetTokens,
+    setActiveLearner: mockSetActiveLearner,
   }),
 }))
 
@@ -24,6 +27,9 @@ beforeEach(() => {
   mockNavigate.mockReset()
   mockRegister.mockReset()
   mockCreate.mockReset()
+  mockSetTokens.mockReset()
+  mockSetTokens.mockResolvedValue(undefined)
+  mockSetActiveLearner.mockReset()
 })
 
 test('renders step 1 fields initially', () => {
@@ -73,6 +79,8 @@ test('calls register then learner create on final submit', async () => {
   fireEvent.press(getByText(/Create Account/i))
   await waitFor(() => {
     expect(mockRegister).toHaveBeenCalledWith({ email: 'a@b.com', password: 'password123', pin: '1234' })
+    expect(mockSetTokens).toHaveBeenCalledWith('acc', 'ref')
     expect(mockCreate).toHaveBeenCalled()
+    expect(mockSetActiveLearner).toHaveBeenCalledWith({ id: 'l1', name: 'Emma', avatarEmoji: '🦋' })
   })
 })
