@@ -72,7 +72,6 @@ export function WelcomeScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.bg} />
 
-      {/* Starfield */}
       <View style={StyleSheet.absoluteFill} pointerEvents="none">
         {STAR_FIELD.map((star) => (
           <View
@@ -92,7 +91,6 @@ export function WelcomeScreen() {
       </View>
 
       <View style={styles.content}>
-        {/* Mascot with glow ring */}
         <Animated.View style={[styles.mascotWrapper, slideUp(mascotAnim)]}>
           <View style={styles.glowRing} />
           <Animated.Text
@@ -102,17 +100,14 @@ export function WelcomeScreen() {
           </Animated.Text>
         </Animated.View>
 
-        {/* App name */}
         <Animated.Text style={[styles.appName, slideUp(titleAnim)]}>
           Smarty Steps
         </Animated.Text>
 
-        {/* Tagline */}
         <Animated.Text style={[styles.tagline, slideUp(taglineAnim)]}>
           Math · Science · English
         </Animated.Text>
 
-        {/* Subject chips */}
         <Animated.View style={[styles.chipsRow, slideUp(chipsAnim)]}>
           {SUBJECT_CHIPS.map(({ label, borderColor, textColor }) => (
             <View key={label} style={[styles.chip, { borderColor }]}>
@@ -121,7 +116,6 @@ export function WelcomeScreen() {
           ))}
         </Animated.View>
 
-        {/* CTA group */}
         <Animated.View style={[styles.ctaGroup, slideUp(ctaAnim)]}>
           <TouchableOpacity
             onPress={() => navigate('Register')}
