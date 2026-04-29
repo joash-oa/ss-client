@@ -27,8 +27,8 @@ export async function apiRequest<T>(
   })
 
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: `HTTP ${res.status}` }))
-    throw new Error((err as { message?: string }).message ?? `HTTP ${res.status}`)
+    const errorBody = await res.json().catch(() => ({ message: `HTTP ${res.status}` }))
+    throw new Error((errorBody as { message?: string }).message ?? `HTTP ${res.status}`)
   }
 
   return res.json() as Promise<T>
