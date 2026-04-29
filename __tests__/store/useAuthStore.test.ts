@@ -46,6 +46,7 @@ test('hydrate reads tokens from SecureStore into state', async () => {
     await useAuthStore.getState().hydrate()
   })
   expect(useAuthStore.getState().accessToken).toBe('acc123')
+  expect(useAuthStore.getState().refreshToken).toBe('ref456')
 })
 
 test('setActiveLearner sets learner in state', () => {

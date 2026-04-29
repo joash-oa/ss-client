@@ -7,7 +7,7 @@ type AuthState = {
   accessToken: string | null
   refreshToken: string | null
   activeLearner: ActiveLearner | null
-  setTokens: (access: string, refresh: string) => Promise<void>
+  setTokens: (accessToken: string, refreshToken: string) => Promise<void>
   clearAuth: () => Promise<void>
   setActiveLearner: (learner: ActiveLearner) => void
   hydrate: () => Promise<void>
@@ -18,10 +18,10 @@ export const useAuthStore = create<AuthState>((set) => ({
   refreshToken: null,
   activeLearner: null,
 
-  setTokens: async (access, refresh) => {
-    await SecureStore.setItemAsync('access_token', access)
-    await SecureStore.setItemAsync('refresh_token', refresh)
-    set({ accessToken: access, refreshToken: refresh })
+  setTokens: async (accessToken, refreshToken) => {
+    await SecureStore.setItemAsync('access_token', accessToken)
+    await SecureStore.setItemAsync('refresh_token', refreshToken)
+    set({ accessToken, refreshToken })
   },
 
   clearAuth: async () => {
