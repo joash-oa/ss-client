@@ -104,11 +104,7 @@ export function WelcomeScreen() {
           Smarty Steps
         </Animated.Text>
 
-        <Animated.Text style={[styles.tagline, slideUp(taglineAnim)]}>
-          Math · Science · English
-        </Animated.Text>
-
-        <Animated.View style={[styles.chipsRow, slideUp(chipsAnim)]}>
+        <Animated.View style={[styles.chipsRow, slideUp(taglineAnim)]}>
           {SUBJECT_CHIPS.map(({ label, borderColor, textColor }) => (
             <View key={label} style={[styles.chip, { borderColor }]}>
               <Text style={[styles.chipLabel, { color: textColor }]}>{label}</Text>
@@ -116,13 +112,17 @@ export function WelcomeScreen() {
           ))}
         </Animated.View>
 
+        <Animated.Text style={[styles.tagline, slideUp(chipsAnim)]}>
+          Your adventure starts here 🌟
+        </Animated.Text>
+
         <Animated.View style={[styles.ctaGroup, slideUp(ctaAnim)]}>
           <TouchableOpacity
             onPress={() => navigate('Register')}
             activeOpacity={0.85}
             style={styles.primaryButton}
           >
-            <Text style={styles.primaryButtonText}>Get Started — it's free</Text>
+            <Text style={styles.primaryButtonText}>Get Started</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -174,18 +174,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   tagline: {
-    fontSize: 12,
-    fontFamily: fonts.semibold,
-    color: colors.accent,
-    letterSpacing: 3,
-    textTransform: 'uppercase',
+    fontSize: 17,
+    fontFamily: fonts.bold,
+    color: colors.textPrimary,
     textAlign: 'center',
-    marginBottom: 34,
+    marginBottom: 52,
+    opacity: 0.9,
   },
   chipsRow: {
     flexDirection: 'row',
     gap: 10,
-    marginBottom: 52,
+    marginBottom: 20,
   },
   chip: {
     borderWidth: 1,

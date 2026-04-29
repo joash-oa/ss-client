@@ -8,10 +8,13 @@ jest.mock('@react-navigation/native', () => ({
 
 beforeEach(() => mockNavigate.mockReset())
 
-test('renders app name and tagline', () => {
+test('renders app name, subject chips, and fun message', () => {
   const { getByText } = render(<WelcomeScreen />)
   expect(getByText('Smarty Steps')).toBeTruthy()
-  expect(getByText(/Math.*Science.*English/i)).toBeTruthy()
+  expect(getByText('Math')).toBeTruthy()
+  expect(getByText('Science')).toBeTruthy()
+  expect(getByText('English')).toBeTruthy()
+  expect(getByText(/Your adventure starts here/i)).toBeTruthy()
 })
 
 test('Get Started button navigates to Register', () => {
