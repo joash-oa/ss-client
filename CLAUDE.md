@@ -11,6 +11,8 @@ Frontend for Smarty Steps, a learning app for 5–8 year olds covering Math, Sci
 - Each task from an implementation plan gets its own branch (e.g. `feat/task-1-expo-init`). Never bundle multiple tasks onto one branch.
 - Each phase gets its own stacked PR. Tasks within a phase are stacked on each other; the phase PR is stacked on the previous phase's PR.
 - After every task is completed, run a `superpowers:code-reviewer` review before moving to the next task.
+- Push the task branch to origin immediately after every commit.
+- All test files go in `__tests__/screens/` regardless of whether they test a screen or a navigator — never create new subdirectories under `__tests__/` without adding them to this structure block.
 - All variables and functions must have descriptive, readable names that clearly convey their purpose. No single-letter names, abbreviations, or ambiguous shorthands (e.g. use `learnerId` not `lid`, `getByParentId` not `getBp`).
 
 ## Project Structure
