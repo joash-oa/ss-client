@@ -8,6 +8,7 @@
       "android"
     ],
     "android": {
+      "package": "com.joashoa.smartysteps",
       "adaptiveIcon": {
         "backgroundColor": "#0f0f1a"
       }

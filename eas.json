@@ -16,7 +16,7 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "STAGING_URL_PLACEHOLDER"
+        "EXPO_PUBLIC_API_URL": "https://staging-api.smartysteps.com"
       }
     },
     "production": {
@@ -24,7 +24,7 @@
         "buildType": "app-bundle"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "PRODUCTION_URL_PLACEHOLDER"
+        "EXPO_PUBLIC_API_URL": "https://api.smartysteps.com"
       }
     }
   },
