@@ -9,6 +9,7 @@ Frontend for Smarty Steps, a learning app for 5–8 year olds covering Math, Sci
 - Always invoke the `superpowers:test-driven-development` skill before writing any implementation code.
 - Always separate concerns into three layers: **Screens (UI only)** → **Hooks/API (data fetching)** → **Store (global state)**. No direct API calls in screens. No UI logic in the store.
 - Each task from an implementation plan gets its own branch (e.g. `feat/task-1-expo-init`). Never bundle multiple tasks onto one branch.
+- All variables and functions must have descriptive, readable names that clearly convey their purpose. No single-letter names, abbreviations, or ambiguous shorthands (e.g. use `learnerId` not `lid`, `getByParentId` not `getBp`).
 
 ## Project Structure
 
