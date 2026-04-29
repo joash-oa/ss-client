@@ -14,7 +14,7 @@ test('renders app name, subject chips, and fun message', () => {
   expect(getByText('Math')).toBeTruthy()
   expect(getByText('Science')).toBeTruthy()
   expect(getByText('English')).toBeTruthy()
-  expect(getByText(/Your adventure starts here/i)).toBeTruthy()
+  expect(getByText(/Your adventure starts here!/i)).toBeTruthy()
 })
 
 test('Get Started button navigates to Register', () => {

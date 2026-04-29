@@ -91,47 +91,51 @@ export function WelcomeScreen() {
       </View>
 
       <View style={styles.content}>
-        <Animated.View style={[styles.mascotWrapper, slideUp(mascotAnim)]}>
-          <View style={styles.glowRing} />
-          <Animated.Text
-            style={[styles.mascotEmoji, { transform: [{ scale: pulseScale }] }]}
-          >
-            🚀
+        <View style={styles.topGroup}>
+          <Animated.View style={[styles.mascotWrapper, slideUp(mascotAnim)]}>
+            <View style={styles.glowRing} />
+            <Animated.Text
+              style={[styles.mascotEmoji, { transform: [{ scale: pulseScale }] }]}
+            >
+              🚀
+            </Animated.Text>
+          </Animated.View>
+
+          <Animated.Text style={[styles.appName, slideUp(titleAnim)]}>
+            Smarty Steps
           </Animated.Text>
-        </Animated.View>
 
-        <Animated.Text style={[styles.appName, slideUp(titleAnim)]}>
-          Smarty Steps
-        </Animated.Text>
+          <Animated.View style={[styles.chipsRow, slideUp(taglineAnim)]}>
+            {SUBJECT_CHIPS.map(({ label, borderColor, textColor }) => (
+              <View key={label} style={[styles.chip, { borderColor }]}>
+                <Text style={[styles.chipLabel, { color: textColor }]}>{label}</Text>
+              </View>
+            ))}
+          </Animated.View>
+        </View>
 
-        <Animated.View style={[styles.chipsRow, slideUp(taglineAnim)]}>
-          {SUBJECT_CHIPS.map(({ label, borderColor, textColor }) => (
-            <View key={label} style={[styles.chip, { borderColor }]}>
-              <Text style={[styles.chipLabel, { color: textColor }]}>{label}</Text>
-            </View>
-          ))}
-        </Animated.View>
+        <Animated.View style={[styles.bottomGroup, slideUp(chipsAnim)]}>
+          <Animated.Text style={[styles.tagline, slideUp(chipsAnim)]}>
+            Your adventure starts here! 🌟
+          </Animated.Text>
 
-        <Animated.Text style={[styles.tagline, slideUp(chipsAnim)]}>
-          Your adventure starts here 🌟
-        </Animated.Text>
+          <Animated.View style={[styles.ctaGroup, slideUp(ctaAnim)]}>
+            <TouchableOpacity
+              onPress={() => navigate('Register')}
+              activeOpacity={0.85}
+              style={styles.primaryButton}
+            >
+              <Text style={styles.primaryButtonText}>Get Started</Text>
+            </TouchableOpacity>
 
-        <Animated.View style={[styles.ctaGroup, slideUp(ctaAnim)]}>
-          <TouchableOpacity
-            onPress={() => navigate('Register')}
-            activeOpacity={0.85}
-            style={styles.primaryButton}
-          >
-            <Text style={styles.primaryButtonText}>Get Started</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => navigate('Login')}
-            activeOpacity={0.7}
-            style={styles.secondaryButton}
-          >
-            <Text style={styles.secondaryButtonText}>Sign In</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigate('Login')}
+              activeOpacity={0.7}
+              style={styles.secondaryButton}
+            >
+              <Text style={styles.secondaryButtonText}>Sign In</Text>
+            </TouchableOpacity>
+          </Animated.View>
         </Animated.View>
       </View>
     </SafeAreaView>
@@ -146,8 +150,17 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     paddingHorizontal: 28,
+    paddingBottom: 36,
+  },
+  topGroup: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomGroup: {
+    width: '100%',
+    alignItems: 'center',
   },
   mascotWrapper: {
     alignItems: 'center',
@@ -178,13 +191,13 @@ const styles = StyleSheet.create({
     fontFamily: fonts.bold,
     color: colors.textPrimary,
     textAlign: 'center',
-    marginBottom: 52,
+    marginBottom: 28,
     opacity: 0.9,
   },
   chipsRow: {
     flexDirection: 'row',
     gap: 10,
-    marginBottom: 20,
+    marginBottom: 60,
   },
   chip: {
     borderWidth: 1,
