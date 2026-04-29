@@ -33,7 +33,7 @@ import { RootNavigator } from '../../src/navigation/RootNavigator'
 
 test('renders Auth stack when no token', () => {
   const { getByText } = render(<RootNavigator />)
-  expect(getByText('Welcome')).toBeTruthy()
+  expect(getByText('Smarty Steps')).toBeTruthy()
 })
 
 test('renders Child stack when token is present', () => {
