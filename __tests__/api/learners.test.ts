@@ -1,24 +1,30 @@
 import { learnersApi } from '../../src/api/learners'
 
-jest.mock('../../src/api/client', () => ({
-  apiRequest: jest.fn(),
-}))
-
+jest.mock('../../src/api/client', () => ({ apiRequest: jest.fn() }))
 import { apiRequest } from '../../src/api/client'
+const mockReq = apiRequest as jest.Mock
 
-const mockApiRequest = apiRequest as jest.Mock
+beforeEach(() => mockReq.mockReset())
 
-beforeEach(() => mockApiRequest.mockReset())
-
-test('list calls GET /learners with auth', async () => {
-  mockApiRequest.mockResolvedValue([])
+test('list calls GET /learners', async () => {
+  mockReq.mockResolvedValue([])
   await learnersApi.list()
-  expect(mockApiRequest).toHaveBeenCalledWith('/learners')
+  expect(mockReq).toHaveBeenCalledWith('/learners')
 })
 
-test('create calls POST /learners with auth and body', async () => {
-  const body = { name: 'Emma', age: 6, grade_level: 1, avatar_emoji: '🦋' }
-  mockApiRequest.mockResolvedValue({ id: 'l1', ...body })
-  await learnersApi.create(body)
-  expect(mockApiRequest).toHaveBeenCalledWith('/learners', { method: 'POST', body })
+test('get calls GET /learners/:id', async () => {
+  const learner = { id: 'l1', name: 'Emma', total_stars: 10, level: 2, xp: 150, streak_days: 3 }
+  mockReq.mockResolvedValue(learner)
+  const result = await learnersApi.get('l1')
+  expect(mockReq).toHaveBeenCalledWith('/learners/l1')
+  expect(result.id).toBe('l1')
+})
+
+test('create calls POST /learners', async () => {
+  mockReq.mockResolvedValue({ id: 'l2', name: 'Kai' })
+  await learnersApi.create({ name: 'Kai', age: 6, grade_level: 1, avatar_emoji: '🦊' })
+  expect(mockReq).toHaveBeenCalledWith('/learners', {
+    method: 'POST',
+    body: { name: 'Kai', age: 6, grade_level: 1, avatar_emoji: '🦊' },
+  })
 })
